@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>apps.txid.uk</title>
+  <meta name="description" content="앱과 웹 앱 쇼케이스 - apps.txid.uk">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="apps.txid.uk">
+  <meta property="og:description" content="앱과 웹 앱 쇼케이스">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apps.txid.uk">
+
+  <!-- Tailwind CSS v4 via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#111113',
+            'surface-raised': '#1a1a1d',
+            'surface-hover': '#222225',
+            border: '#2a2a2d',
+            accent: '#f7931a',
+            'accent-light': '#ffab40',
+            'accent-dark': '#c47515',
+            'text-primary': '#e8e8e8',
+            'text-secondary': '#888890',
+          },
+          fontFamily: {
+            sans: ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            display: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <style>
+    body {
+      background-color: #111113;
+      color: #e8e8e8;
+    }
+
+    .app-card {
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .app-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(247, 147, 26, 0.25);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      background-color: rgba(247, 147, 26, 0.1);
+      color: #f7931a;
+      border: 1px solid rgba(247, 147, 26, 0.2);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .card-featured {
+        grid-column: span 2;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">
+        <span class="text-accent">apps</span><span class="text-text-secondary">.txid.uk</span>
+      </h1>
+      <p class="mt-3 text-text-secondary text-lg">
+        앱과 웹 앱 모음
+      </p>
+    </header>
+
+    <!-- App Grid -->
+    <main class="bento-grid">
+
+      <!-- Featured: TXID Explorer -->
+      <a href="#" target="_blank" rel="noopener noreferrer"
+         class="app-card card-featured block rounded-2xl border border-border bg-surface-raised p-6 no-underline">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-4xl">⚡</span>
+          <div class="flex gap-1.5">
+            <span class="tag">웹 앱</span>
+            <span class="tag">비트코인</span>
+          </div>
+        </div>
+        <h2 class="font-display text-xl font-semibold text-text-primary mb-2">
+          TXID Explorer
+        </h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          비트코인 트랜잭션을 빠르게 조회하고 분석하는 웹 앱. 멤풀 상태, 수수료, 확인 수를 한눈에 확인할 수 있습니다.
+        </p>
+        <div class="mt-4 flex items-center text-accent text-sm font-mono">
+          <span>열기 →</span>
+        </div>
+      </a>
+
+      <!-- 키 생성기 -->
+      <a href="#" target="_blank" rel="noopener noreferrer"
+         class="app-card block rounded-2xl border border-border bg-surface-raised p-6 no-underline">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-4xl">🔑</span>
+          <div class="flex gap-1.5">
+            <span class="tag">도구</span>
+          </div>
+        </div>
+        <h2 class="font-display text-xl font-semibold text-text-primary mb-2">
+          키 생성기
+        </h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          다양한 형식의 암호화 키와 시드 문구를 안전하게 생성하는 오프라인 도구.
+        </p>
+        <div class="mt-4 flex items-center text-accent text-sm font-mono">
+          <span>열기 →</span>
+        </div>
+      </a>
+
+      <!-- 수수료 대시보드 -->
+      <a href="#" target="_blank" rel="noopener noreferrer"
+         class="app-card block rounded-2xl border border-border bg-surface-raised p-6 no-underline">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-4xl">📊</span>
+          <div class="flex gap-1.5">
+            <span class="tag">웹 앱</span>
+            <span class="tag">차트</span>
+          </div>
+        </div>
+        <h2 class="font-display text-xl font-semibold text-text-primary mb-2">
+          수수료 대시보드
+        </h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          실시간 비트코인 네트워크 수수료를 시각화하고 최적의 전송 시점을 추천합니다.
+        </p>
+        <div class="mt-4 flex items-center text-accent text-sm font-mono">
+          <span>열기 →</span>
+        </div>
+      </a>
+
+      <!-- 사토시 변환기 -->
+      <a href="#" target="_blank" rel="noopener noreferrer"
+         class="app-card block rounded-2xl border border-border bg-surface-raised p-6 no-underline">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-4xl">🧮</span>
+          <div class="flex gap-1.5">
+            <span class="tag">도구</span>
+            <span class="tag">계산기</span>
+          </div>
+        </div>
+        <h2 class="font-display text-xl font-semibold text-text-primary mb-2">
+          사토시 변환기
+        </h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          BTC, 사토시, KRW, USD 간의 실시간 변환. 간단하고 빠른 계산기.
+        </p>
+        <div class="mt-4 flex items-center text-accent text-sm font-mono">
+          <span>열기 →</span>
+        </div>
+      </a>
+
+      <!-- 주소 검증기 -->
+      <a href="#" target="_blank" rel="noopener noreferrer"
+         class="app-card block rounded-2xl border border-border bg-surface-raised p-6 no-underline">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-4xl">🔍</span>
+          <div class="flex gap-1.5">
+            <span class="tag">웹 앱</span>
+          </div>
+        </div>
+        <h2 class="font-display text-xl font-semibold text-text-primary mb-2">
+          주소 검증기
+        </h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          비트코인 주소의 유효성을 검증하고 주소 유형(P2PKH, P2SH, Bech32 등)을 식별합니다.
+        </p>
+        <div class="mt-4 flex items-center text-accent text-sm font-mono">
+          <span>열기 →</span>
+        </div>
+      </a>
+
+      <!-- OP_RETURN 디코더 -->
+      <a href="#" target="_blank" rel="noopener noreferrer"
+         class="app-card block rounded-2xl border border-border bg-surface-raised p-6 no-underline">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-4xl">📝</span>
+          <div class="flex gap-1.5">
+            <span class="tag">도구</span>
+          </div>
+        </div>
+        <h2 class="font-display text-xl font-semibold text-text-primary mb-2">
+          OP_RETURN 디코더
+        </h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          트랜잭션에 포함된 OP_RETURN 데이터를 디코딩하여 사람이 읽을 수 있는 형식으로 변환합니다.
+        </p>
+        <div class="mt-4 flex items-center text-accent text-sm font-mono">
+          <span>열기 →</span>
+        </div>
+      </a>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-border">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-text-secondary text-sm">
+        <p>
+          © 2026
+          <a href="https://txid.uk" class="text-accent hover:text-accent-light transition-colors">txid.uk</a>
+        </p>
+        <div class="flex items-center gap-4">
+          <a href="https://txid.uk" class="hover:text-accent transition-colors">블로그</a>
+          <a href="https://github.com/bc1qwerty" target="_blank" rel="noopener noreferrer"
+             class="hover:text-accent transition-colors">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
