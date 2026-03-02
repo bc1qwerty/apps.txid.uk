@@ -1,233 +1,187 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>apps.txid.uk</title>
-  <meta name="description" content="앱과 웹 앱 쇼케이스 - apps.txid.uk">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="apps.txid.uk">
-  <meta property="og:description" content="앱과 웹 앱 쇼케이스">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://apps.txid.uk">
-
-  <!-- Tailwind CSS v4 via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            surface: '#111113',
-            'surface-raised': '#161b22',
-            'surface-hover': '#21262d',
-            border: '#2a2a2d',
-            accent: '#f7931a',
-            'accent-light': '#ffab40',
-            'accent-dark': '#c47515',
-            'text-primary': '#e8e8e8',
-            'text-secondary': '#888890',
-          },
-          fontFamily: {
-            sans: ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-            mono: ['Space Mono', 'JetBrains Mono', 'monospace'],
-            display: ['Outfit', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-
-  <!-- Fonts -->
-  <link rel="stylesheet" as="style" crossorigin
-    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='20' fill='%23f7931a'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230d1117'/%3E%3Ctext x='96' y='120' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='100' fill='%23f7931a'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
-
-  <style>
-    body {
-      background-color: #0d1117;
-      color: #e8e8e8;
-    }
-
-    .app-card {
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .app-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(247, 147, 26, 0.25);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 9999px;
-      background-color: rgba(247, 147, 26, 0.1);
-      color: #f7931a;
-      border: 1px solid rgba(247, 147, 26, 0.2);
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 0.75rem;
-    }
-
-    @media (min-width: 768px) {
-      .card-featured {
-        grid-column: span 2;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>apps.txid.uk — 앱 모음</title>
+<meta name="description" content="txid.uk 네트워크에서 만든 앱 모음">
+<meta name="theme-color" content="#f7931a">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='20' fill='%23f7931a'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--accent:#f7931a;--text1:#e6edf3;--text2:#8b949e;--text3:#6e7681;--radius:8px;--font:'Space Mono',monospace;--font-ko:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;--max-w:1100px;}
+[data-theme="light"]{--bg:#f6f8fa;--bg2:#fff;--bg3:#eaeef2;--border:#d0d7de;--text1:#1f2328;--text2:#656d76;--text3:#8c959f;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-ko);background:var(--bg);color:var(--text1);min-height:100vh;display:flex;flex-direction:column;}
+a{color:inherit;text-decoration:none;}
+header{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.nav-top{max-width:var(--max-w);margin:0 auto;padding:0 20px;height:48px;display:flex;align-items:center;gap:16px;}
+.logo{font-family:var(--font);font-size:1.1rem;font-weight:700;color:var(--accent);letter-spacing:.05em;flex-shrink:0;}
+.logo:hover{opacity:.8;}
+.nav-links{display:flex;align-items:center;gap:20px;margin-left:8px;}
+.nav-links a{font-family:var(--font-ko);font-size:.8rem;color:var(--text2);transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text1);}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:6px;}
+.tools-dropdown{position:relative;}
+.tools-dropdown-btn{background:none;border:1px solid var(--border);color:var(--text2);font-family:var(--font-ko);font-size:.78rem;padding:5px 10px;border-radius:6px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.tools-dropdown-btn:hover{border-color:var(--accent);color:var(--accent);}
+.tools-dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;min-width:220px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.4);overflow:hidden;}
+.tools-dropdown:hover .tools-dropdown-menu{display:block;}
+.tools-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:9px 14px;color:var(--text2);font-family:var(--font-ko);font-size:.78rem;transition:background .15s,color .15s;}
+.tools-dropdown-menu a:hover{background:var(--bg3);color:var(--accent);}
+.tools-dropdown-menu a svg{flex-shrink:0;}
+.tools-dropdown-menu a .dd-sub{font-size:.65rem;color:var(--text3);display:block;}
+.theme-btn{background:none;border:1px solid var(--border);color:var(--text2);width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+main{max-width:var(--max-w);margin:0 auto;padding:40px 20px 60px;flex:1;width:100%;}
+.page-title{font-family:var(--font);font-size:1.5rem;font-weight:700;margin-bottom:6px;}
+.page-sub{font-size:.85rem;color:var(--text2);margin-bottom:32px;}
+.app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+.app-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:10px;transition:transform .2s,border-color .2s,box-shadow .2s;}
+.app-card:hover{transform:translateY(-2px);border-color:rgba(247,147,26,.3);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.app-card.featured{border-color:rgba(247,147,26,.35);background:linear-gradient(135deg,var(--bg2) 80%,rgba(247,147,26,.04));}
+.app-card-top{display:flex;align-items:flex-start;justify-content:space-between;}
+.app-icon{width:40px;height:40px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--accent);}
+.app-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tag{font-size:.65rem;padding:2px 7px;border-radius:20px;background:rgba(247,147,26,.1);color:var(--accent);border:1px solid rgba(247,147,26,.2);}
+.tag.gray{background:var(--bg3);color:var(--text3);border-color:var(--border);}
+.app-name{font-size:.9rem;font-weight:600;color:var(--text1);}
+.app-desc{font-size:.78rem;color:var(--text2);line-height:1.6;flex:1;}
+.app-link{font-size:.72rem;color:var(--accent);font-family:var(--font);margin-top:auto;}
+.app-link.gray{color:var(--text3);}
+.appbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:16px 20px;border-top:1px solid var(--border);background:var(--bg2);}
+.appbar a{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:.62rem;font-family:var(--font-ko);background:var(--bg3);min-width:56px;transition:all .2s;}
+.appbar a:hover,.appbar a.active{border-color:var(--accent);color:var(--accent);}
+.appbar a svg{flex-shrink:0;}
+footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.72rem;color:var(--text3);}
+footer a{color:var(--accent);}
+@media(max-width:600px){.nav-links{display:none;}}
+</style>
 </head>
-<body class="min-h-screen font-sans antialiased">
-
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-    <!-- Header -->
-    <header class="mb-12">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
-        <a href="https://txid.uk" style="font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;color:#f7931a;text-decoration:none;letter-spacing:.05em">apps.txid.uk</a>
-        <div style="display:flex;gap:10px;align-items:center">
-          <a href="https://txid.uk" style="font-size:.78rem;color:#8b949e;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.color='#f7931a'" onmouseout="this.style.color='#8b949e'">₿ 탐색기</a>
-          <div style="position:relative" onmouseenter="this.querySelector('.app-tools-menu').style.display='block'" onmouseleave="this.querySelector('.app-tools-menu').style.display='none'">
-            <button style="background:none;border:1px solid #30363d;color:#8b949e;font-family:'Pretendard',sans-serif;font-size:.78rem;padding:5px 10px;border-radius:6px;cursor:pointer">도구 ▾</button>
-            <div style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#161b22;border:1px solid #30363d;border-radius:8px;min-width:220px;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.5);overflow:hidden" onmouseenter="this.style.display='block'" onmouseleave="this.style.display='none'">
-<a href="https://txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span><span style="display:block">탐색기</span><span style="display:block;font-size:.65rem;color:#6e7681">블록 · TX · 주소</span></span></a><a href="https://tools.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span><span style="display:block">Tools</span><span style="display:block;font-size:.65rem;color:#6e7681">주소검증 · 스크립트 · 변환기</span></span></a><a href="https://viz.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span><span style="display:block">Viz</span><span style="display:block;font-size:.65rem;color:#6e7681">TX 네트워크 시각화</span></span></a><a href="https://stats.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span><span style="display:block">Stats</span><span style="display:block;font-size:.65rem;color:#6e7681">온체인 대시보드</span></span></a><a href="https://nodes.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span><span style="display:block">Nodes</span><span style="display:block;font-size:.65rem;color:#6e7681">라이트닝 네트워크</span></span></a><a href="https://map.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg><span><span style="display:block">Map</span><span style="display:block;font-size:.65rem;color:#6e7681">노드 · 채굴풀 세계 분포</span></span></a><a href="https://portfolio.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span><span style="display:block">Portfolio</span><span style="display:block;font-size:.65rem;color:#6e7681">멀티주소 잔액 추적</span></span></a><a href="https://tx.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span><span style="display:block">TX</span><span style="display:block;font-size:.65rem;color:#6e7681">브로드캐스트 · 디코더</span></span></a><a href="https://apps.txid.uk" style="display:flex;align-items:center;gap:10px;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif;transition:all .15s" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'"><svg width="14" height="14" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span><span style="display:block">Apps</span><span style="display:block;font-size:.65rem;color:#6e7681">앱 모음</span></span></a>
-          </div>
-          </div>
+<body>
+<header>
+  <div class="nav-top">
+    <a href="/" class="logo">apps.txid.uk</a>
+    <nav class="nav-links">
+      <a href="https://txid.uk">탐색기</a>
+      <a href="https://learn.txid.uk">공부방</a>
+      <a href="#" class="active">앱</a>
+    </nav>
+    <div class="nav-right">
+      <div class="tools-dropdown">
+        <button class="tools-dropdown-btn">도구</button>
+        <div class="tools-dropdown-menu">
+          <a href="https://txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span><span style="display:block">탐색기</span><span class="dd-sub">블록 · TX · 주소</span></span></a>
+          <a href="https://tools.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span><span style="display:block">Tools</span><span class="dd-sub">주소검증 · 스크립트 · 변환기</span></span></a>
+          <a href="https://viz.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span><span style="display:block">Viz</span><span class="dd-sub">TX 네트워크 시각화</span></span></a>
+          <a href="https://stats.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span><span style="display:block">Stats</span><span class="dd-sub">온체인 대시보드</span></span></a>
+          <a href="https://nodes.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span><span style="display:block">Nodes</span><span class="dd-sub">라이트닝 네트워크</span></span></a>
+          <a href="https://map.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg><span><span style="display:block">Map</span><span class="dd-sub">노드 · 채굴풀 세계 분포</span></span></a>
+          <a href="https://portfolio.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span><span style="display:block">Portfolio</span><span class="dd-sub">멀티주소 잔액 추적</span></span></a>
+          <a href="https://tx.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span><span style="display:block">TX</span><span class="dd-sub">브로드캐스트 · 디코더</span></span></a>
+          <a href="https://learn.txid.uk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span><span style="display:block">Learn</span><span class="dd-sub">비트코인 공부방</span></span></a>
         </div>
       </div>
-      <h1 style="font-family:'Space Mono',monospace;font-size:1.8rem;font-weight:700;color:#f0f6fc;margin-bottom:8px">앱 <span style="color:#f7931a">모음</span></h1>
-      <p class="mt-3 text-text-secondary" style="font-family:'Pretendard',sans-serif">txid.uk 네트워크에서 만든 앱들</p>
-    </header>
-
-    <!-- App Grid -->
-    <main class="bento-grid">
-
-      <!-- txid.uk 메인 탐색기 (featured) -->
-      <a href="https://txid.uk" target="_blank" rel="noopener noreferrer"
-         class="app-card card-featured block rounded-xl border border-border bg-surface-raised p-4 no-underline" style="border-color:rgba(247,147,26,.3)">
-        <div class="flex items-start justify-between mb-3">
-          <span style="font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:#f7931a">₿</span>
-          <div class="flex gap-1.5">
-            <span class="tag">탐색기</span>
-            <span class="tag">라이브</span>
-          </div>
-        </div>
-        <h2 class="font-display text-base font-semibold text-text-primary mb-1">
-          txid.uk — Bitcoin 탐색기
-        </h2>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          비트코인 블록·트랜잭션·주소 탐색기. 실시간 멤풀 시각화, 다크/라이트 테마, 한/영/일 지원.
-        </p>
-      </a>
-
-      <!-- 검측 사진 관리 -->
-      <a href="https://inspection-photo-manager.lovable.app" target="_blank" rel="noopener noreferrer"
-         class="app-card block rounded-xl border border-border bg-surface-raised p-4 no-underline">
-        <div class="flex items-start justify-between mb-3">
-          <span class="text-3xl">📸</span>
-          <div class="flex gap-1.5">
-            <span class="tag">웹 앱</span>
-            <span class="tag">업무</span>
-          </div>
-        </div>
-        <h2 class="font-display text-base font-semibold text-text-primary mb-1">
-          검측 사진 관리
-        </h2>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          건설 현장 검측용으로 직접 만들어 사용한 웹 앱. 사진 촬영과 관리, 딱 그것만 합니다. 단순함이 장점.
-        </p>
-      </a>
-
-      <!-- 자산관리 봇 대시보드 -->
-      <a href="https://bot1.txid.uk/" target="_blank" rel="noopener noreferrer"
-         class="app-card block rounded-xl border border-border bg-surface-raised p-4 no-underline">
-        <div class="flex items-start justify-between mb-3">
-          <span class="text-3xl">🤖</span>
-          <div class="flex gap-1.5">
-            <span class="tag">대시보드</span>
-            <span class="tag">비공개</span>
-          </div>
-        </div>
-        <h2 class="font-display text-base font-semibold text-text-primary mb-1">
-          자산관리 봇
-        </h2>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          개인 서버에서 운영 중인 자산관리 봇의 대시보드. 비공개로 운영합니다.
-        </p>
-      </a>
-
-      <!-- 베스트 아카이브 봇 -->
-      <a href="https://t.me/best_archive_bot_korea" target="_blank" rel="noopener noreferrer"
-         class="app-card block rounded-xl border border-border bg-surface-raised p-4 no-underline">
-        <div class="flex items-start justify-between mb-3">
-          <span class="text-3xl">📰</span>
-          <div class="flex gap-1.5">
-            <span class="tag">텔레그램</span>
-            <span class="tag">봇</span>
-          </div>
-        </div>
-        <h2 class="font-display text-base font-semibold text-text-primary mb-1">
-          베스트 게시물 모음
-        </h2>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          한국 각 커뮤니티의 베스트 게시물을 모아주는 텔레그램 채널. 일정 추천수·조회수·댓글수를 충족하는 글만 선별합니다.
-        </p>
-      </a>
-
-      <!-- 슬기로운 안전생활 -->
-      <a href="https://t.me/safety_alarm_korea" target="_blank" rel="noopener noreferrer"
-         class="app-card block rounded-xl border border-border bg-surface-raised p-4 no-underline">
-        <div class="flex items-start justify-between mb-3">
-          <span class="text-3xl">🦺</span>
-          <div class="flex gap-1.5">
-            <span class="tag">텔레그램</span>
-            <span class="tag">안전</span>
-          </div>
-        </div>
-        <h2 class="font-display text-base font-semibold text-text-primary mb-1">
-          슬기로운 안전생활
-        </h2>
-        <p class="text-text-secondary text-sm leading-relaxed">
-          안전보건공단의 최신 소식을 전달하는 텔레그램 채널.
-        </p>
-      </a>
-
-    </main>
-
-    <!-- 앱바 -->
-    <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:20px 0;border-top:1px solid #21262d;margin-top:32px">
-<a href="https://txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>탐색기</span></a><a href="https://tools.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Tools</span></a><a href="https://viz.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>Viz</span></a><a href="https://stats.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Stats</span></a><a href="https://nodes.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Nodes</span></a><a href="https://map.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg><span>Map</span></a><a href="https://portfolio.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Portfolio</span></a><a href="https://tx.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span>TX</span></a><a href="https://apps.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:56px;transition:all .2s" onmouseover="this.style.borderColor='#f7931a';this.style.color='#f7931a'" onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'"><svg width="18" height="18" style="flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Apps</span></a>
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="테마 전환">🌙</button>
     </div>
-
-    <!-- Footer -->
-    <footer class="mt-16 pt-8 border-t border-border">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-text-secondary text-sm">
-        <p>
-          © 2026
-          <a href="https://txid.uk" class="text-accent hover:text-accent-light transition-colors">txid.uk</a>
-        </p>
-        <div class="flex items-center gap-4">
-          <a href="https://txid.uk" class="hover:text-accent transition-colors">블로그</a>
-          <a href="https://github.com/bc1qwerty" target="_blank" rel="noopener noreferrer"
-             class="hover:text-accent transition-colors">GitHub</a>
-        </div>
-      </div>
-    </footer>
-
   </div>
+</header>
 
-  <!-- GoatCounter -->
-  <script data-goatcounter="https://txid.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<main>
+  <div class="page-title">앱 <span style="color:var(--accent)">모음</span></div>
+  <p class="page-sub">txid.uk 네트워크에서 만든 서비스들</p>
+  <div class="app-grid">
+    <a href="https://txid.uk" class="app-card featured">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="app-tags"><span class="tag">탐색기</span><span class="tag">라이브</span></div></div>
+      <div class="app-name">txid.uk — Bitcoin 탐색기</div>
+      <div class="app-desc">비트코인 블록·트랜잭션·주소 탐색기. 실시간 멤풀 시각화, 다크/라이트 테마, 한/영/일 지원.</div>
+      <div class="app-link">txid.uk →</div>
+    </a>
+    <a href="https://tools.txid.uk" class="app-card">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="app-tags"><span class="tag">도구</span></div></div>
+      <div class="app-name">Tools</div>
+      <div class="app-desc">주소 검증, 스크립트 디코더, BTC 단위 변환기, Bech32 디코더, OP 코드 사전.</div>
+      <div class="app-link">tools.txid.uk →</div>
+    </a>
+    <a href="https://viz.txid.uk" class="app-card">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><div class="app-tags"><span class="tag">시각화</span></div></div>
+      <div class="app-name">Viz</div>
+      <div class="app-desc">TXID 또는 주소를 입력하면 입출력 관계를 D3 force 그래프로 시각화.</div>
+      <div class="app-link">viz.txid.uk →</div>
+    </a>
+    <a href="https://stats.txid.uk" class="app-card">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="app-tags"><span class="tag">통계</span></div></div>
+      <div class="app-name">Stats</div>
+      <div class="app-desc">해시레이트, 채굴 난이도, 블록 크기, 마이닝 풀 점유율 등 온체인 핵심 지표.</div>
+      <div class="app-link">stats.txid.uk →</div>
+    </a>
+    <a href="https://nodes.txid.uk" class="app-card">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="app-tags"><span class="tag">라이트닝</span></div></div>
+      <div class="app-name">Nodes</div>
+      <div class="app-desc">라이트닝 네트워크 노드 탐색기. 상위 노드 용량·채널 수 확인 및 노드 검색.</div>
+      <div class="app-link">nodes.txid.uk →</div>
+    </a>
+    <a href="https://map.txid.uk" class="app-card">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div><div class="app-tags"><span class="tag">지도</span></div></div>
+      <div class="app-name">Map</div>
+      <div class="app-desc">라이트닝 노드 및 채굴풀 국가별 분포를 D3 세계지도 위에 버블로 표시.</div>
+      <div class="app-link">map.txid.uk →</div>
+    </a>
+    <a href="https://portfolio.txid.uk" class="app-card">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="app-tags"><span class="tag">포트폴리오</span></div></div>
+      <div class="app-name">Portfolio</div>
+      <div class="app-desc">여러 비트코인 주소의 잔액을 한 화면에. 모든 데이터는 브라우저 로컬에만 저장.</div>
+      <div class="app-link">portfolio.txid.uk →</div>
+    </a>
+    <a href="https://tx.txid.uk" class="app-card">
+      <div class="app-card-top"><div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div><div class="app-tags"><span class="tag">브로드캐스트</span></div></div>
+      <div class="app-name">TX Builder</div>
+      <div class="app-desc">Raw TX 디코더, TXID 조회, 서명된 트랜잭션 네트워크 브로드캐스트.</div>
+      <div class="app-link">tx.txid.uk →</div>
+    </a>
+    <a href="https://inspection-photo-manager.lovable.app" target="_blank" rel="noopener" class="app-card">
+      <div class="app-card-top"><div class="app-icon" style="color:var(--text2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div class="app-tags"><span class="tag gray">외부</span><span class="tag gray">업무</span></div></div>
+      <div class="app-name">검측 사진 관리</div>
+      <div class="app-desc">건설 현장 검측용 사진 촬영·관리 웹앱. 단순함이 장점.</div>
+      <div class="app-link gray">lovable.app →</div>
+    </a>
+    <a href="https://t.me/best_archive_bot_korea" target="_blank" rel="noopener" class="app-card">
+      <div class="app-card-top"><div class="app-icon" style="color:var(--text2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="app-tags"><span class="tag gray">텔레그램</span><span class="tag gray">봇</span></div></div>
+      <div class="app-name">베스트 게시물 모음</div>
+      <div class="app-desc">한국 커뮤니티 베스트 게시물을 선별해서 전달하는 텔레그램 채널.</div>
+      <div class="app-link gray">t.me →</div>
+    </a>
+    <a href="https://t.me/safety_alarm_korea" target="_blank" rel="noopener" class="app-card">
+      <div class="app-card-top"><div class="app-icon" style="color:var(--text2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="app-tags"><span class="tag gray">텔레그램</span><span class="tag gray">안전</span></div></div>
+      <div class="app-name">슬기로운 안전생활</div>
+      <div class="app-desc">안전보건공단 최신 소식을 전달하는 텔레그램 채널.</div>
+      <div class="app-link gray">t.me →</div>
+    </a>
+  </div>
+</main>
 
+<div class="appbar">
+  <a href="https://txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>탐색기</span></a>
+  <a href="https://tools.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Tools</span></a>
+  <a href="https://viz.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>Viz</span></a>
+  <a href="https://stats.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Stats</span></a>
+  <a href="https://nodes.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Nodes</span></a>
+  <a href="https://map.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg><span>Map</span></a>
+  <a href="https://portfolio.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Portfolio</span></a>
+  <a href="https://tx.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span>TX</span></a>
+  <a href="https://learn.txid.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Learn</span></a>
+  <a href="/" class="active"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Apps</span></a>
+</div>
+
+<footer>© 2025 <a href="https://txid.uk">txid.uk</a></footer>
+
+<script>
+(function(){const t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);document.getElementById('theme-btn').textContent=t==='dark'?'🌙':'☀️';})();
+function toggleTheme(){const h=document.documentElement;const n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.getElementById('theme-btn').textContent=n==='dark'?'🌙':'☀️';}
+</script>
+<script data-goatcounter="https://txid.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
