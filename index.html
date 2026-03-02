@@ -20,8 +20,8 @@
         extend: {
           colors: {
             surface: '#111113',
-            'surface-raised': '#1a1a1d',
-            'surface-hover': '#222225',
+            'surface-raised': '#161b22',
+            'surface-hover': '#21262d',
             border: '#2a2a2d',
             accent: '#f7931a',
             'accent-light': '#ffab40',
@@ -31,7 +31,7 @@
           },
           fontFamily: {
             sans: ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            mono: ['Space Mono', 'JetBrains Mono', 'monospace'],
             display: ['Outfit', 'sans-serif'],
           },
         },
@@ -44,14 +44,15 @@
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='20' fill='%23f7931a'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230d1117'/%3E%3Ctext x='96' y='120' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='100' fill='%23f7931a'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
 
   <style>
     body {
-      background-color: #111113;
+      background-color: #0d1117;
       color: #e8e8e8;
     }
 
@@ -92,16 +93,48 @@
 
     <!-- Header -->
     <header class="mb-12">
-      <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">
-        <span class="text-accent">apps</span><span class="text-text-secondary">.txid.uk</span>
-      </h1>
-      <p class="mt-3 text-text-secondary text-lg">
-        앱과 웹 앱 모음
-      </p>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+        <a href="https://txid.uk" style="font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;color:#f7931a;text-decoration:none;letter-spacing:.05em">apps.txid.uk</a>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a href="https://txid.uk" style="font-size:.78rem;color:#8b949e;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.color='#f7931a'" onmouseout="this.style.color='#8b949e'">₿ 탐색기</a>
+          <div style="position:relative" onmouseenter="this.querySelector('.app-tools-menu').style.display='block'" onmouseleave="this.querySelector('.app-tools-menu').style.display='none'">
+            <button style="background:none;border:1px solid #30363d;color:#8b949e;font-family:'Pretendard',sans-serif;font-size:.78rem;padding:5px 10px;border-radius:6px;cursor:pointer">도구 ▾</button>
+            <div class="app-tools-menu" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#161b22;border:1px solid #30363d;border-radius:8px;min-width:200px;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.5);overflow:hidden">
+              <a href="https://tools.txid.uk" style="display:block;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'">🔧 Tools — 주소검증·변환기</a>
+              <a href="https://viz.txid.uk" style="display:block;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'">⚡ Viz — TX 시각화</a>
+              <a href="https://stats.txid.uk" style="display:block;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'">📊 Stats — 온체인 통계</a>
+              <a href="https://nodes.txid.uk" style="display:block;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'">🌐 Nodes — 라이트닝</a>
+              <a href="https://map.txid.uk" style="display:block;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'">🗺 Map — 세계 분포</a>
+              <a href="https://portfolio.txid.uk" style="display:block;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'">💼 Portfolio — 잔액 추적</a>
+              <a href="https://learn.txid.uk" style="display:block;padding:9px 14px;color:#8b949e;font-size:.78rem;text-decoration:none;font-family:'Pretendard',sans-serif" onmouseover="this.style.background='#21262d';this.style.color='#f7931a'" onmouseout="this.style.background='';this.style.color='#8b949e'">📚 Learn — 비트코인 공부방</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h1 style="font-family:'Space Mono',monospace;font-size:1.8rem;font-weight:700;color:#f0f6fc;margin-bottom:8px">앱 <span style="color:#f7931a">모음</span></h1>
+      <p class="mt-3 text-text-secondary" style="font-family:'Pretendard',sans-serif">txid.uk 네트워크에서 만든 앱들</p>
     </header>
 
     <!-- App Grid -->
     <main class="bento-grid">
+
+      <!-- txid.uk 메인 탐색기 (featured) -->
+      <a href="https://txid.uk" target="_blank" rel="noopener noreferrer"
+         class="app-card card-featured block rounded-xl border border-border bg-surface-raised p-4 no-underline" style="border-color:rgba(247,147,26,.3)">
+        <div class="flex items-start justify-between mb-3">
+          <span style="font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:#f7931a">₿</span>
+          <div class="flex gap-1.5">
+            <span class="tag">탐색기</span>
+            <span class="tag">라이브</span>
+          </div>
+        </div>
+        <h2 class="font-display text-base font-semibold text-text-primary mb-1">
+          txid.uk — Bitcoin 탐색기
+        </h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          비트코인 블록·트랜잭션·주소 탐색기. 실시간 멤풀 시각화, 다크/라이트 테마, 한/영/일 지원.
+        </p>
+      </a>
 
       <!-- 검측 사진 관리 -->
       <a href="https://inspection-photo-manager.lovable.app" target="_blank" rel="noopener noreferrer"
@@ -176,6 +209,18 @@
       </a>
 
     </main>
+
+    <!-- 앱바 -->
+    <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:20px 0;border-top:1px solid #21262d;margin-top:32px">
+      <a href="https://txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #f7931a;border-radius:8px;text-decoration:none;color:#f7931a;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">₿</span><span>탐색기</span></a>
+      <a href="https://tools.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">🔧</span><span>Tools</span></a>
+      <a href="https://viz.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">⚡</span><span>Viz</span></a>
+      <a href="https://stats.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">📊</span><span>Stats</span></a>
+      <a href="https://nodes.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">🌐</span><span>Nodes</span></a>
+      <a href="https://map.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">🗺</span><span>Map</span></a>
+      <a href="https://portfolio.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">💼</span><span>Portfolio</span></a>
+      <a href="https://learn.txid.uk" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid #30363d;border-radius:8px;text-decoration:none;color:#8b949e;font-size:.62rem;font-family:'Pretendard',sans-serif;background:#161b22;min-width:52px"><span style="font-size:1rem">📚</span><span>Learn</span></a>
+    </div>
 
     <!-- Footer -->
     <footer class="mt-16 pt-8 border-t border-border">
