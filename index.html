@@ -62,7 +62,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);position:stic
 .theme-btn:hover{border-color:var(--accent);}
 /* Main */
 main{max-width:var(--max-w);margin:0 auto;padding:40px 20px 60px;flex:1;width:100%;}
-.page-title{font-family:var(--font);font-size:1.4rem;font-weight:700;margin-bottom:6px;}
+.page-title{font-family:var(--font-ko);font-size:1.4rem;font-weight:700;margin-bottom:6px;}
 .page-sub{font-size:.82rem;color:var(--text2);margin-bottom:32px;}
 /* 앱 그리드 */
 .app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
@@ -93,6 +93,14 @@ main{max-width:var(--max-w);margin:0 auto;padding:40px 20px 60px;flex:1;width:10
 .app-card{transition:transform .2s,border-color .2s,box-shadow .2s,opacity .2s;}
 .app-card.hidden{display:none;}
 
+
+.lang-dropdown{position:relative;}
+.lang-btn{background:none;border:1px solid var(--border);color:var(--text2);font-family:var(--font);font-size:.72rem;font-weight:700;padding:0 8px;height:32px;border-radius:6px;cursor:pointer;transition:all .2s;letter-spacing:.05em;}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.lang-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;min-width:100px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.4);overflow:hidden;}
+.lang-menu.open{display:block;}
+.lang-menu button{display:block;width:100%;text-align:left;padding:8px 14px;background:none;border:none;color:var(--text2);font-family:var(--font-ko);font-size:.78rem;cursor:pointer;transition:background .15s,color .15s;}
+.lang-menu button:hover{background:var(--bg3);color:var(--accent);}
 footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.72rem;color:var(--text3);font-family:var(--font-ko);}
 footer a{color:var(--accent);}
 @media(max-width:600px){.nav-links{display:none;}}
@@ -122,14 +130,22 @@ footer a{color:var(--accent);}
       </div>
     </div>
     <div class="nav-right">
+      <div class="lang-dropdown">
+        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">KO</button>
+        <div class="lang-menu" id="lang-menu">
+          <button onclick="setLang('ko')">한국어</button>
+          <button onclick="setLang('en')">English</button>
+          <button onclick="setLang('ja')">日本語</button>
+        </div>
+      </div>
       <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="테마 전환" aria-label="테마 전환"></button>
     </div>
   </div>
 </header>
 
 <main>
-  <div class="page-title">앱 <span style="color:var(--accent)">모음</span></div>
-  <p class="page-sub">txid.uk 네트워크에서 만든 서비스들</p>
+  <div class="page-title" data-ko="앱 모음" data-en="App Hub" data-ja="アプリ一覧"><span data-ko="앱 " data-en="App " data-ja="アプリ">앱 </span><span style="color:var(--accent)" data-ko="모음" data-en="Hub" data-ja="一覧">모음</span></div>
+  <p class="page-sub" data-ko="txid.uk 네트워크에서 만든 서비스들" data-en="Services built on the txid.uk network" data-ja="txid.ukネットワークのサービス一覧">txid.uk 네트워크에서 만든 서비스들</p>
 
 
   <div class="filter-bar">
@@ -291,7 +307,23 @@ function filterTag(tag) {
 }
 
 <script>
+
+let _lang = localStorage.getItem('lang') || 'ko';
+function setLang(l){
+  _lang=l; localStorage.setItem('lang',_lang);
+  const btn=document.getElementById('lang-btn');
+  if(btn) btn.textContent={ko:'KO',en:'EN',ja:'JA'}[_lang]||'KO';
+  document.getElementById('lang-menu')?.classList.remove('open');
+  document.querySelectorAll('[data-ko]').forEach(el=>{
+    const val=el.dataset[_lang]||el.dataset.en||el.dataset.ko;
+    if(val) el.textContent=val;
+  });
+}
+function toggleLang(){document.getElementById('lang-menu')?.classList.toggle('open');}
+document.addEventListener('click',e=>{const m=document.getElementById('lang-menu');if(m&&!e.target.closest('.lang-dropdown'))m.classList.remove('open');});
+
 (function(){
+  setLang(_lang);
   const t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');
   document.documentElement.setAttribute('data-theme',t);
   updateThemeBtn();
