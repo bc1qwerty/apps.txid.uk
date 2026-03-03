@@ -292,6 +292,9 @@ footer a{color:var(--accent);}
 <footer>© 2025 <a href="https://txid.uk">txid.uk</a></footer>
 
 
+
+<script>
+
 function filterTag(tag) {
   // 언어 변경 후에도 항상 한국어 data-ko 기준으로 비교
   document.querySelectorAll('.filter-tag').forEach(b => {
@@ -306,8 +309,6 @@ function filterTag(tag) {
     }
   });
 }
-
-<script>
 
 let _lang = localStorage.getItem('lang') || 'ko';
 function setLang(l){
