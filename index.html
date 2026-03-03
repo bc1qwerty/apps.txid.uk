@@ -293,8 +293,9 @@ footer a{color:var(--accent);}
 
 
 function filterTag(tag) {
+  // 언어 변경 후에도 항상 한국어 data-ko 기준으로 비교
   document.querySelectorAll('.filter-tag').forEach(b => {
-    b.classList.toggle('active', b.textContent === tag);
+    b.classList.toggle('active', (b.dataset.ko || b.textContent) === tag);
   });
   document.querySelectorAll('.app-card').forEach(card => {
     if (tag === '전체') {
