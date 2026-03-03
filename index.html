@@ -84,6 +84,15 @@ main{max-width:var(--max-w);margin:0 auto;padding:40px 20px 60px;flex:1;width:10
 .appbar a{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:.62rem;font-family:var(--font-ko);background:var(--bg3);min-width:56px;transition:all .2s;}
 .appbar a:hover,.appbar a.active{border-color:var(--accent);color:var(--accent);}
 .appbar a svg{flex-shrink:0;}
+
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;align-items:center;}
+.filter-label{font-size:.72rem;color:var(--text3);font-family:var(--font-ko);margin-right:4px;}
+.filter-tag{font-size:.65rem;padding:4px 12px;border-radius:20px;background:var(--bg3);color:var(--text2);border:1px solid var(--border);font-family:var(--font-ko);cursor:pointer;transition:all .2s;}
+.filter-tag:hover{border-color:var(--accent);color:var(--accent);}
+.filter-tag.active{background:rgba(247,147,26,.15);color:var(--accent);border-color:var(--accent);}
+.app-card{transition:transform .2s,border-color .2s,box-shadow .2s,opacity .2s;}
+.app-card.hidden{display:none;}
+
 footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.72rem;color:var(--text3);font-family:var(--font-ko);}
 footer a{color:var(--accent);}
 @media(max-width:600px){.nav-links{display:none;}}
@@ -122,114 +131,128 @@ footer a{color:var(--accent);}
   <div class="page-title">앱 <span style="color:var(--accent)">모음</span></div>
   <p class="page-sub">txid.uk 네트워크에서 만든 서비스들</p>
 
-  <div class="app-grid">
 
-    <a href="https://txid.uk" class="app-card featured">
+  <div class="filter-bar">
+    <span class="filter-label">필터:</span>
+    <button class="filter-tag active" onclick="filterTag('전체')">전체</button>
+    <button class="filter-tag" onclick="filterTag('탐색기')">탐색기</button>
+    <button class="filter-tag" onclick="filterTag('도구')">도구</button>
+    <button class="filter-tag" onclick="filterTag('시각화')">시각화</button>
+    <button class="filter-tag" onclick="filterTag('통계')">통계</button>
+    <button class="filter-tag" onclick="filterTag('라이트닝')">라이트닝</button>
+    <button class="filter-tag" onclick="filterTag('지도')">지도</button>
+    <button class="filter-tag" onclick="filterTag('포트폴리오')">포트폴리오</button>
+    <button class="filter-tag" onclick="filterTag('텔레그램')">텔레그램</button>
+    <button class="filter-tag" onclick="filterTag('외부')">외부</button>
+  </div>
+  <div class="app-grid" id="app-grid">
+
+    <a href="https://txid.uk" class="app-card featured" data-tags="탐색기 라이브">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div class="app-tags"><span class="tag">탐색기</span><span class="tag">라이브</span></div>
       </div>
-      <div class="app-name">txid.uk — Bitcoin 탐색기</div>
+      <div class="app-name" data-tags="탐색기 라이브">txid.uk — Bitcoin 탐색기</div>
       <div class="app-desc">비트코인 블록·트랜잭션·주소 탐색기. 실시간 멤풀 시각화, 다크/라이트 테마, 한/영/일 지원.</div>
       <div class="app-link">txid.uk →</div>
     </a>
 
-    <a href="https://tools.txid.uk" class="app-card">
+    <a href="https://tools.txid.uk" class="app-card" data-tags="도구">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <div class="app-tags"><span class="tag">도구</span></div>
       </div>
-      <div class="app-name">Tools</div>
+      <div class="app-name" data-tags="도구">Tools</div>
       <div class="app-desc">주소 검증, 스크립트 디코더, BTC 단위 변환기, Bech32 디코더, OP 코드 사전.</div>
       <div class="app-link">tools.txid.uk →</div>
     </a>
 
-    <a href="https://viz.txid.uk" class="app-card">
+    <a href="https://viz.txid.uk" class="app-card" data-tags="시각화">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
         <div class="app-tags"><span class="tag">시각화</span></div>
       </div>
-      <div class="app-name">Viz</div>
+      <div class="app-name" data-tags="시각화">Viz</div>
       <div class="app-desc">TXID 또는 주소 입력 시 입출력 관계를 D3 force 그래프로 시각화.</div>
       <div class="app-link">viz.txid.uk →</div>
     </a>
 
-    <a href="https://stats.txid.uk" class="app-card">
+    <a href="https://stats.txid.uk" class="app-card" data-tags="통계">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <div class="app-tags"><span class="tag">통계</span></div>
       </div>
-      <div class="app-name">Stats</div>
+      <div class="app-name" data-tags="통계">Stats</div>
       <div class="app-desc">해시레이트, 채굴 난이도, 블록 크기, 마이닝 풀 점유율 등 온체인 대시보드.</div>
       <div class="app-link">stats.txid.uk →</div>
     </a>
 
-    <a href="https://nodes.txid.uk" class="app-card">
+    <a href="https://nodes.txid.uk" class="app-card" data-tags="라이트닝">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <div class="app-tags"><span class="tag">라이트닝</span></div>
       </div>
-      <div class="app-name">Nodes</div>
+      <div class="app-name" data-tags="라이트닝">Nodes</div>
       <div class="app-desc">라이트닝 네트워크 노드 탐색기. 상위 노드 용량·채널 수 확인 및 노드 검색.</div>
       <div class="app-link">nodes.txid.uk →</div>
     </a>
 
-    <a href="https://map.txid.uk" class="app-card">
+    <a href="https://map.txid.uk" class="app-card" data-tags="지도 시각화">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
         <div class="app-tags"><span class="tag">지도</span></div>
       </div>
-      <div class="app-name">Map</div>
+      <div class="app-name" data-tags="지도 시각화">Map</div>
       <div class="app-desc">라이트닝 노드·채굴풀 국가별 분포를 D3 세계지도 위에 시각화.</div>
       <div class="app-link">map.txid.uk →</div>
     </a>
 
-    <a href="https://portfolio.txid.uk" class="app-card">
+    <a href="https://portfolio.txid.uk" class="app-card" data-tags="포트폴리오">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <div class="app-tags"><span class="tag">포트폴리오</span></div>
       </div>
-      <div class="app-name">Portfolio</div>
+      <div class="app-name" data-tags="포트폴리오">Portfolio</div>
       <div class="app-desc">여러 비트코인 주소 잔액을 한 화면에. 모든 데이터는 로컬에만 저장.</div>
       <div class="app-link">portfolio.txid.uk →</div>
     </a>
 
-    <a href="https://tx.txid.uk" class="app-card">
+    <a href="https://tx.txid.uk" class="app-card" data-tags="도구">
       <div class="app-top">
         <div class="app-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
         <div class="app-tags"><span class="tag">브로드캐스트</span></div>
       </div>
-      <div class="app-name">TX Builder</div>
+      <div class="app-name" data-tags="도구">TX Builder</div>
       <div class="app-desc">Raw TX 디코더, TXID 조회, 서명된 트랜잭션 네트워크 브로드캐스트.</div>
       <div class="app-link">tx.txid.uk →</div>
     </a>
 
-    <a href="https://inspection-photo-manager.lovable.app" target="_blank" rel="noopener" class="app-card">
+    <a href="https://inspection-photo-manager.lovable.app" target="_blank" rel="noopener" class="app-card" data-tags="외부 업무">
       <div class="app-top">
         <div class="app-icon muted"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
         <div class="app-tags"><span class="tag gray">외부</span><span class="tag gray">업무</span></div>
       </div>
-      <div class="app-name">검측 사진 관리</div>
+      <div class="app-name" data-tags="외부 업무">검측 사진 관리</div>
       <div class="app-desc">건설 현장 검측용 사진 촬영·관리 웹앱. 단순함이 장점.</div>
       <div class="app-link muted">lovable.app →</div>
     </a>
 
-    <a href="https://t.me/best_archive_bot_korea" target="_blank" rel="noopener" class="app-card">
+    <a href="https://t.me/best_archive_bot_korea" target="_blank" rel="noopener" class="app-card" data-tags="텔레그램">
       <div class="app-top">
         <div class="app-icon muted"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <div class="app-tags"><span class="tag gray">텔레그램</span><span class="tag gray">봇</span></div>
       </div>
-      <div class="app-name">베스트 게시물 모음</div>
+      <div class="app-name" data-tags="텔레그램">베스트 게시물 모음</div>
       <div class="app-desc">한국 커뮤니티 베스트 게시물을 선별해서 전달하는 텔레그램 채널.</div>
       <div class="app-link muted">t.me →</div>
     </a>
 
-    <a href="https://t.me/safety_alarm_korea" target="_blank" rel="noopener" class="app-card">
+    <a href="https://t.me/safety_alarm_korea" target="_blank" rel="noopener" class="app-card" data-tags="텔레그램 안전">
       <div class="app-top">
         <div class="app-icon muted"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="app-tags"><span class="tag gray">텔레그램</span><span class="tag gray">안전</span></div>
       </div>
-      <div class="app-name">슬기로운 안전생활</div>
+      <div class="app-name" data-tags="텔레그램 안전">슬기로운 안전생활</div>
       <div class="app-desc">안전보건공단 최신 소식을 전달하는 텔레그램 채널.</div>
       <div class="app-link muted">t.me →</div>
     </a>
@@ -251,6 +274,21 @@ footer a{color:var(--accent);}
 </div>
 
 <footer>© 2025 <a href="https://txid.uk">txid.uk</a></footer>
+
+
+function filterTag(tag) {
+  document.querySelectorAll('.filter-tag').forEach(b => {
+    b.classList.toggle('active', b.textContent === tag);
+  });
+  document.querySelectorAll('.app-card').forEach(card => {
+    if (tag === '전체') {
+      card.classList.remove('hidden');
+    } else {
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.includes(tag));
+    }
+  });
+}
 
 <script>
 (function(){
